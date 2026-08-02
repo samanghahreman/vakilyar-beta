@@ -1,0 +1,14 @@
+{
+  "name": "vakilyar-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "صفحه توزیع نسخه آزمایشی وکیل‌یار — دانلود با کد دعوت",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
