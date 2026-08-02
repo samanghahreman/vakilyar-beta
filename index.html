@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>وکیل‌یار — نسخه آزمایشی</title>
+<style>
+  :root {
+    --navy: #14213d; --green: #3f9e6a; --green-soft: #eaf5ef;
+    --amber-bg: #fdf6e3; --amber-line: #e0c068; --amber-text: #7a5c12;
+    --line: #d8dce4; --muted: #5a6270; --bg: #f6f7f9; --card: #fff; --text: #14181f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --navy: #0e1729; --green: #4fb37c; --green-soft: #17301f;
+      --amber-bg: #2b2410; --amber-line: #6b5a24; --amber-text: #e0c068;
+      --line: #2a3244; --muted: #9aa4b5; --bg: #0b111d; --card: #131b2a; --text: #e8ecf3;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: Vazirmatn, Vazir, Tahoma, system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.85;
+  }
+  .wrap { max-width: 560px; margin-inline: auto; padding: 0 18px 48px; }
+  header { background: var(--navy); color: #fff; padding: 34px 18px 40px; text-align: center; }
+  .logo {
+    width: 66px; height: 66px; border-radius: 19px; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px; font-size: 32px;
+  }
+  header h1 { margin: 0; font-size: 25px; }
+  header p { margin: 6px 0 0; opacity: .72; font-size: 14px; }
+  .badge {
+    display: inline-block; margin-top: 14px; padding: 5px 14px; border-radius: 999px;
+    background: rgba(255,255,255,.13); font-size: 12.5px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 20px; margin-top: -22px; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  }
+  .card + .card { margin-top: 16px; box-shadow: none; }
+  h2 { font-size: 16px; margin: 0 0 10px; }
+  label { display: block; font-size: 13.5px; color: var(--muted); margin-bottom: 7px; }
+  input[type="text"] {
+    width: 100%; padding: 14px 15px; font-size: 16px; font-family: inherit;
+    text-align: center; letter-spacing: 2px; border: 1px solid var(--line);
+    border-radius: 13px; background: var(--bg); color: var(--text);
+  }
+  input[type="text"]:focus { outline: none; border-color: var(--green); }
+  button {
+    width: 100%; margin-top: 12px; padding: 15px; font-family: inherit;
+    font-size: 16px; font-weight: 700; color: #fff; background: var(--green);
+    border: none; border-radius: 14px; cursor: pointer;
+  }
+  button:disabled { opacity: .55; cursor: default; }
+  .msg { margin-top: 12px; padding: 12px 14px; border-radius: 12px; font-size: 13.5px; display: none; }
+  .msg.err { display: block; background: #fdecec; color: #9b1c1c; border: 1px solid #f3c0c0; }
+  .msg.ok { display: block; background: var(--green-soft); color: var(--green); border: 1px solid var(--green); }
+  @media (prefers-color-scheme: dark) {
+    .msg.err { background: #2d1414; color: #f19a9a; border-color: #6b2b2b; }
+  }
+  .meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+  .meta span { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; }
+  ol { padding-inline-start: 20px; margin: 0; font-size: 14px; }
+  ol li { margin-bottom: 9px; }
+  .notice {
+    background: var(--amber-bg); border: 1px solid var(--amber-line); color: var(--amber-text);
+    border-radius: 14px; padding: 14px; font-size: 13px; margin-top: 16px;
+  }
+  footer { text-align: center; font-size: 12px; color: var(--muted); margin-top: 26px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">⚖️</div>
+  <h1>وکیل‌یار</h1>
+  <p>ساخته‌شده در تیم قطره</p>
+  <div class="badge">نسخه آزمایشی — فقط برای تسترها</div>
+</header>
+
+<div class="wrap">
+
+  <div class="card">
+    <h2>دریافت نسخه آزمایشی</h2>
+    <form id="f">
+      <label for="code">کد دعوتی که برایتان فرستاده شده را وارد کنید</label>
+      <input id="code" type="text" inputmode="latin" autocomplete="off"
+             spellcheck="false" placeholder="XXXX-XXXX" required>
+      <button id="btn" type="submit">دانلود</button>
+    </form>
+    <div class="msg" id="msg"></div>
+    <div class="meta" id="meta"></div>
+  </div>
+
+  <div class="card">
+    <h2>نصب روی اندروید</h2>
+    <ol>
+      <li>فایل دانلودشده را از بخش «دانلودها» باز کنید.</li>
+      <li>اگر گوشی اجازه نداد، در همان پیام روی «تنظیمات» بزنید و
+          <strong>نصب از منابع نامشخص</strong> را برای مرورگرتان روشن کنید.</li>
+      <li>پس از نصب، اپ اجازه <strong>اعلان</strong> می‌خواهد — بدون آن یادآورها به دستتان نمی‌رسد.</li>
+      <li>در صفحه یادآورها اگر کارت زرد باتری دیدید، رویش بزنید و
+          <strong>اجرای بدون محدودیت</strong> را اجازه دهید. سامسونگ و شیائومی
+          وگرنه اپ را می‌خوابانند و آلارم نمی‌رسد.</li>
+    </ol>
+    <div class="notice">
+      اپ <strong>هیچ مجوز اینترنتی ندارد</strong>. پرونده‌ها، یادآورها و محاسبات
+      فقط روی همان گوشی ذخیره می‌شوند و هیچ‌جا ارسال نمی‌گردند.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>گزارش مشکل</h2>
+    <p style="font-size:14px;margin:0">
+      اگر چیزی درست کار نکرد، لطفاً بنویسید <strong>چه کاری کردید</strong>،
+      <strong>چه انتظاری داشتید</strong> و <strong>چه شد</strong> — به‌همراه مدل گوشی
+      و نسخه اندروید. عکس صفحه هم خیلی کمک می‌کند.
+    </p>
+  </div>
+
+  <div class="notice">
+    ⚠️ وکیل‌یار ماشین‌حساب حقوقی است، نه مشاور. خروجی‌اش سند غیررسمی است و
+    جایگزین نظر وکیل دادگستری نیست.
+  </div>
+
+  <footer>نسخه آزمایشی · بازنشر نکنید</footer>
+</div>
+
+<script>
+  // مخزن عمومیِ توزیع — فقط فایل نصبی، بدون کد منبع
+  const REPO = 'cafecode2025/vakilyar-beta';
+
+  /**
+   * کدهای دعوت به‌صورت هش ذخیره شده‌اند، نه متن ساده.
+   *
+   * صادقانه: این یک دروازه نرم است، نه امنیت واقعی. چون صفحه استاتیک است و
+   * سروری در کار نیست، کسی که آدرس مستقیم فایل را پیدا کند بدون کد هم دانلود
+   * می‌کند. هش فقط جلوی «سورس را ببین و کد را بردار» را می‌گیرد.
+   *
+   * اگر روزی دروازه واقعی لازم شد، server.js در مخزن اصلی آماده است.
+   */
+  const CODES = [
+    "d684a1e311fd6880448f9360d9d5e9eaf174d0675facbb5cf49d1dc56e77b5f4",
+    "1e10ab2a4e06fa87e671b59208782190f9fe6f2679de838ecd689365060715fa",
+    "7d653b88bda64808be81dc09d8995da156cff37d875e0845da109ff0f2c74d36",
+    "e00c84242ac65e1acb569b79c7383587b10cda6d3f205496a5863f86492d77b2",
+    "908d3b4931008186bf7de8364f9cdd5aebda1d5063f5c46e56d8875bf49f6aeb",
+    "3b95d01a58bf6b3e9212f24b369b6e9dd5f9e801ca758ecfeb537f771fd5b52c",
+    "d49fff0641cd36bf77641d398b9d2c19eec2a1744aae7e1c040e2950962bd405",
+    "ec3ad6c24c47be85d69c60a4c3d6bb31ece3e30ce1c0d7aa7534ef68a8e8223b"
+  ];
+
+  const f = document.getElementById('f');
+  const btn = document.getElementById('btn');
+  const msg = document.getElementById('msg');
+  const meta = document.getElementById('meta');
+  let asset = null;
+
+  function show(text, kind) {
+    msg.textContent = text;
+    msg.className = 'msg ' + kind;
+  }
+
+  async function sha256(text) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  // مخزن عمومی است، پس API گیت‌هاب بدون توکن جواب می‌دهد
+  fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
+    .then(r => r.ok ? r.json() : null)
+    .then(rel => {
+      if (!rel) return;
+      asset = (rel.assets || []).find(a => a.name.endsWith('.apk'));
+      const items = [];
+      if (rel.tag_name) items.push('نسخه ' + rel.tag_name);
+      if (asset) items.push((asset.size / 1048576).toFixed(2) + ' مگابایت');
+      if (rel.published_at) items.push(new Date(rel.published_at).toLocaleDateString('fa-IR'));
+      meta.innerHTML = items.map(t => '<span>' + t + '</span>').join('');
+    })
+    .catch(() => {});
+
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const code = document.getElementById('code').value.trim().toUpperCase();
+    if (!code) return;
+
+    btn.disabled = true;
+    btn.textContent = 'در حال بررسی…';
+    msg.className = 'msg';
+
+    // مکث کوتاه تا حدس زدن پیاپی کند شود
+    await new Promise(r => setTimeout(r, 600));
+
+    const hash = await sha256(code);
+    if (!CODES.includes(hash)) {
+      show('کد دعوت معتبر نیست.', 'err');
+      btn.disabled = false;
+      btn.textContent = 'دانلود';
+      return;
+    }
+
+    if (!asset) {
+      show('فایل نصبی هنوز منتشر نشده است. کمی بعد دوباره امتحان کنید.', 'err');
+      btn.disabled = false;
+      btn.textContent = 'دانلود';
+      return;
+    }
+
+    const a = document.createElement('a');
+    a.href = asset.browser_download_url;
+    a.download = asset.name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    show('دانلود شروع شد. راهنمای نصب را پایین بخوانید.', 'ok');
+    btn.disabled = false;
+    btn.textContent = 'دانلود دوباره';
+  });
+</script>
+</body>
+</html>
