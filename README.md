@@ -6,7 +6,7 @@
 
 ## دریافت
 
-صفحه دانلود: **https://samanghahreman.github.io/vakilyar-beta/**
+صفحه دانلود: **https://vakilyar-beta-gold.vercel.app/**
 
 برای دانلود به کد دعوت نیاز دارید. اگر تستر هستید و کدی ندارید، از تیم بخواهید.
 
